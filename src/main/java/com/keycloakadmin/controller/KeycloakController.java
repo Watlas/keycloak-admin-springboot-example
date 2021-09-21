@@ -35,7 +35,7 @@ public class KeycloakController {
      * @return user created
      * @throws Exception
      */
-    @PostMapping
+    @PostMapping("/create/valid")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<?> createUserAndValidEmail(@RequestBody UserDTO userDTO) throws Exception {
         return ResponseEntity.status(HttpStatus.CREATED).body(keycloakService.createUserAndVerifyEmail(userDTO));
