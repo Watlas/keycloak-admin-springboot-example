@@ -1,0 +1,17 @@
+keycloak:
+  auth-server-url: "https://key.mxti.com.br/auth/"
+  bearer-only: true
+  credentials:
+    secret: ${KEYCLOAK_SECRET}
+  principal-attribute: "preferred_username"
+  realm: "fashionboot"
+  resource: "fashionbootback"
+  ssl-required: "none"
+  use-resource-role-mappings: true
+
+#  user you log in without keycloak admin
+user-admin: "keycloak"
+password-admin: "171717"
+
+server:
+  port: 8081
