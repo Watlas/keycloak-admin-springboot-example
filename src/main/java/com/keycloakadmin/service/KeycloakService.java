@@ -72,6 +72,35 @@ public class KeycloakService {
         }
     }
 
+    public UserDTO createUserAndVerifyEmail(UserDTO userDTO) throws Exception {
+        try {
+            UsersResource usersResource = getUsersResource();
+            UserRepresentation user = new UserRepresentation();
+            user.setEnabled(true);
+            user.setUsername(userDTO.getEmail());
+            user.setFirstName(userDTO.getFirstname());
+            user.setLastName(userDTO.getLastname());
+            user.setEmail(userDTO.getEmail());
+            user.setEmailVerified(false);
+            Response response = usersResource.create(user);
+            userDTO.setStatusCode(response.getStatus());
+            userDTO.setStatus(response.getStatusInfo().toString());
+            if (response.getStatus() == 201) {
+                String userId = CreatedResponseUtil.getCreatedId(response);
+                CredentialRepresentation passwordCred = new CredentialRepresentation();
+                passwordCred.setTemporary(false);
+                passwordCred.setType(CredentialRepresentation.PASSWORD);
+                passwordCred.setValue(userDTO.getPassword());
+                UserResource userResource = usersResource.get(userId);
+                userResource.resetPassword(passwordCred);
+                this.sendEmailVerify(userId);
+            }
+            return userDTO;
+        } catch (Exception e) {
+            throw new Exception("error create user keycloak: " + e.getMessage());
+        }
+    }
+
     public UserDTO updateUser(UserDTO userDTO) throws Exception {
         try {
             UsersResource usersResource = getUsersResource();
