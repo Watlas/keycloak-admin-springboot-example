@@ -105,7 +105,7 @@ public class KeycloakController {
      * @return
      * @throws Exception
      */
-    @GetMapping()
+    @GetMapping
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<?> getUsers() throws Exception {
         return ResponseEntity.ok().body(keycloakService.getAllUsers());
