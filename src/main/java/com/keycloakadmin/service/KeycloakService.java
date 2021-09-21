@@ -273,7 +273,7 @@ public class KeycloakService {
             map.add("password", userDTO.getPassword());
             map.add("grant_type", "password");
             entity = new HttpEntity<>(map, headers);
-            ResponseEntity<AccessTokenResponse> response = new RestTemplate().exchange("https://key.mxti.com.br/auth/realms/"+realm+"/protocol/openid-connect/token",
+            ResponseEntity<AccessTokenResponse> response = new RestTemplate().exchange(authServerUrl+"realms/"+realm+"/protocol/openid-connect/token",
                     HttpMethod.POST,
                     entity,
                     AccessTokenResponse.class);
