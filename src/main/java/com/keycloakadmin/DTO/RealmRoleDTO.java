@@ -1,6 +1,7 @@
 package com.keycloakadmin.DTO;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 @Setter
