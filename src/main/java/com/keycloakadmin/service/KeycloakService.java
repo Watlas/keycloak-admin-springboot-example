@@ -39,6 +39,8 @@ public class KeycloakService {
     private String authServerUrl;
     @Value("${keycloak.realm}")
     private String realm;
+    @Value("${keycloak.resource}")
+    private String resource;
     @Value("${password-admin}")
     private String passwordAdmin;
     @Value("${user-admin}")
@@ -266,12 +268,12 @@ public class KeycloakService {
             HttpHeaders headers = new HttpHeaders();
             MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
             HttpEntity<MultiValueMap<String, String>> entity;
-            map.add("client_id", realm);
+            map.add("client_id", resource);
             map.add("username", userDTO.getEmail());
             map.add("password", userDTO.getPassword());
             map.add("grant_type", "password");
             entity = new HttpEntity<>(map, headers);
-            ResponseEntity<AccessTokenResponse> response = new RestTemplate().exchange("https://key.mxti.com.br/auth/realms/fashionboot/protocol/openid-connect/token",
+            ResponseEntity<AccessTokenResponse> response = new RestTemplate().exchange("https://key.mxti.com.br/auth/realms/"+realm+"/protocol/openid-connect/token",
                     HttpMethod.POST,
                     entity,
                     AccessTokenResponse.class);
