@@ -39,8 +39,6 @@ public class KeycloakService {
     private String authServerUrl;
     @Value("${keycloak.realm}")
     private String realm;
-    @Value("${keycloak.resource}")
-    private String resource;
     @Value("${password-admin}")
     private String passwordAdmin;
     @Value("${user-admin}")
@@ -263,26 +261,6 @@ public class KeycloakService {
         }
     }
 
-    public AccessTokenResponse login(UserDTO userDTO) throws Exception {
-        try {
-            HttpHeaders headers = new HttpHeaders();
-            MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
-            HttpEntity<MultiValueMap<String, String>> entity;
-            map.add("client_id", resource);
-            map.add("username", userDTO.getEmail());
-            map.add("password", userDTO.getPassword());
-            map.add("grant_type", "password");
-            entity = new HttpEntity<>(map, headers);
-            ResponseEntity<AccessTokenResponse> response = new RestTemplate().exchange(authServerUrl+"realms/"+realm+"/protocol/openid-connect/token",
-                    HttpMethod.POST,
-                    entity,
-                    AccessTokenResponse.class);
-            return response.getBody();
-        } catch (Exception e) {
-            throw new Exception("error login" + e.getMessage());
-
-        }
-    }
 
     /**
      * Method makes an instance of keycloakADMIN.

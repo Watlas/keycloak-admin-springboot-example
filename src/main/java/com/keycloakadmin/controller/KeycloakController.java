@@ -193,19 +193,6 @@ public class KeycloakController {
         return ResponseEntity.ok().body(keycloakService.getAssigneedRolesByUser(id));
     }
 
-    /**
-     * return token access user.
-     *
-     * @param userDTO
-     * @return
-     * @throws Exception
-     */
-    @PostMapping("/login")
-    @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<?> login(UserDTO userDTO) throws Exception {
-        return ResponseEntity.ok().body(keycloakService.login(userDTO));
-    }
-
     @PostMapping("/group/join")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<?> joinGroup(@RequestParam("userId") String userId, @RequestParam("group") String group) throws Exception {
