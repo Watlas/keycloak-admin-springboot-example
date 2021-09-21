@@ -5,7 +5,7 @@ keycloak:
     secret: <client_secret_your_keycloak>
   principal-attribute: "preferred_username"
   realm: <your-realm>
-  resource: <your-resource ou client>
+  resource: <your-resource or client>
   ssl-required: "none"
   use-resource-role-mappings: true
 
