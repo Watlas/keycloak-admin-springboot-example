@@ -3,7 +3,7 @@
 * create user
 * update user
 * send email verify user
-* send email forgot passord user
+* send email forgot password user
 * login and logout
 * getUsers
 * config roles
