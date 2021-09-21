@@ -151,6 +151,25 @@ public class KeycloakService {
         }
     }
 
+    public void leaveGroup(String group, String userId) {
+        try {
+            UsersResource usersResource = getUsersResource();
+            UserResource userResource = usersResource.get(userId);
+            userResource.leaveGroup(group);
+        } catch (Exception e) {
+            throw new NotFoundException("error leave group: User Id: " + userId);
+        }
+    }
+
+    public void joinGroup(String group, String userId){
+        try {
+            UsersResource usersResource = getUsersResource();
+            UserResource userResource = usersResource.get(userId);
+            userResource.joinGroup(group);
+        } catch (Exception e) {
+            throw new NotFoundException("error join group: User Id: " + userId);
+        }
+    }
 
     public void assigneeRole(String userId, String role) throws Exception {
         try {
@@ -194,7 +213,7 @@ public class KeycloakService {
         }
     }
 
-    public List<RealmRoleDTO> getAssignedRolesByUser(String userId) throws Exception {
+    public List<RealmRoleDTO> getAssigneedRolesByUser(String userId) throws Exception {
         try {
             UsersResource usersResource = getUsersResource();
             UserResource userResource = usersResource.get(userId);

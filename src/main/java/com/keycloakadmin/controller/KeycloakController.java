@@ -177,8 +177,8 @@ public class KeycloakController {
      */
     @GetMapping("/assingnee-role/{id}")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<?> getAssingneeRoleByUser(@PathVariable String id) throws Exception {
-        return ResponseEntity.ok().body(keycloakService.getAssignedRolesByUser(id));
+    public ResponseEntity<?> getAssigneedRolesByUser(@PathVariable String id) throws Exception {
+        return ResponseEntity.ok().body(keycloakService.getAssigneedRolesByUser(id));
     }
 
     /**
@@ -193,5 +193,20 @@ public class KeycloakController {
     public ResponseEntity<?> login(UserDTO userDTO) throws Exception {
         return ResponseEntity.ok().body(keycloakService.login(userDTO));
     }
+
+    @PostMapping("/group/join")
+    @ResponseStatus(HttpStatus.CREATED)
+    public ResponseEntity<?> joinGroup(@RequestParam("userId") String userId, @RequestParam("group") String group) throws Exception {
+        keycloakService.joinGroup(group, userId);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/group/leave")
+    @ResponseStatus(HttpStatus.CREATED)
+    public ResponseEntity<?> leaveGroup(@RequestParam("userId") String userId, @RequestParam("group") String group) throws Exception {
+        keycloakService.leaveGroup(group, userId);
+        return ResponseEntity.noContent().build();
+    }
+
 
 }
