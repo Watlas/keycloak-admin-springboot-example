@@ -4,7 +4,7 @@
 * update user
 * send email verify user
 * send email forgot password user
-* login and logout
+* logout
 * getUsers
 * config roles
 * more
