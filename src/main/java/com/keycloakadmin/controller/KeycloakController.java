@@ -193,6 +193,14 @@ public class KeycloakController {
         return ResponseEntity.ok().body(keycloakService.getAssigneedRolesByUser(id));
     }
 
+    /**
+     * user join group
+     *
+     * @param userId
+     * @param group
+     * @return
+     * @throws Exception
+     */
     @PostMapping("/group/join")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<?> joinGroup(@RequestParam("userId") String userId, @RequestParam("group") String group) throws Exception {
@@ -200,6 +208,14 @@ public class KeycloakController {
         return ResponseEntity.noContent().build();
     }
 
+    /**
+     * user leave group
+     *
+     * @param userId
+     * @param group
+     * @return
+     * @throws Exception
+     */
     @PostMapping("/group/leave")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<?> leaveGroup(@RequestParam("userId") String userId, @RequestParam("group") String group) throws Exception {

@@ -1,17 +1,17 @@
 keycloak:
-  auth-server-url: <url_your_server>
+  auth-server-url: ${KEYCLOAK_URL}/auth/
   bearer-only: true
   credentials:
-    secret: <client_secret_your_keycloak>
+    secret: ${KEYCLOAK_SECRET}
   principal-attribute: "preferred_username"
-  realm: <your-realm>
-  resource: <your-resource or client>
+  realm: ${KEYCLOAK_REALM}
+  resource: ${KEYCLOAK_RESOURCE}
   ssl-required: "none"
   use-resource-role-mappings: true
 
 #  user you log in without keycloak admin
-user-admin: <your-user-login-admin>
-password-admin: <your-password-admin>
+user-admin: ${KEYCLOAK_USER}
+password-admin: ${KEYCLOAK_PASSWORD}
 
 server:
   port: 8081

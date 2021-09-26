@@ -253,7 +253,6 @@ public class KeycloakService {
         }
     }
 
-
     /**
      * Method makes an instance of keycloakADMIN.
      *
