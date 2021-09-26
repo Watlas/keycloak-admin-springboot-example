@@ -21,7 +21,7 @@
 
 ## important
 
-### remember these requests have no protection so anyone could access, you can break this by creating an ADMIN role in keycloak and setting wheel protection in keycloak config, example below.
+### Remember, the requests are then public, so when going up to production anyone could access, one way to protect yourself is by using 'antMatchers', and creating the 'ADMIN' role in the keycloak, as shown in the example below.
 
 ![Alt text](admin.png "admin")
 
