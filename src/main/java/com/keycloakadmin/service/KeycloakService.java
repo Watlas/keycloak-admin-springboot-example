@@ -145,7 +145,7 @@ public class KeycloakService {
             UsersResource usersResource = getUsersResource();
             usersResource.get(idUser).logout();
         } catch (Exception e) {
-            throw new Exception("error send email forgot passoword keycloak: " + e.getMessage());
+            throw new Exception("error logout: " + e.getMessage());
         }
     }
 
@@ -229,7 +229,7 @@ public class KeycloakService {
                 return userDto;
             }).collect(Collectors.toList());
         } catch (Exception e) {
-            throw new Exception("error list users keyclak" + e.getMessage());
+            throw new Exception("error list users keycloak" + e.getMessage());
 
         }
     }
